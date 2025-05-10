@@ -3,18 +3,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 
 @Component
-public class MoneyTransferService {
+public class MainClass {
     private AccountRepository accountRepository = new AccountRepository();
     private NotificationService notificationService = new NotificationService();
     private AuditService auditService = new AuditService();
     private RestTemplate restTemplate = new RestTemplate();
 
     @Transactional
-    public boolean transfer(Long fromAccountId, Long toAccountId, double amount) {
+    public boolean doWork(Long fromAccountId, Long toAccountId, double amount) {
         if (amount <= 0) {
             return false;
         }
